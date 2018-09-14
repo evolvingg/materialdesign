@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>working with sprite</title>
+	<style>
+		.anchr{
+			background-color:lightblue;
+			padding:20px;
+			border:1px solid black;
+			height:100px;
+			position: absolute;
+		}
+		.container{
+			border:2px solid black;
+			height:400px;
+		}
+	</style>
+</head>
+<body>
+	<picture>
+		<source 
+		srcset="download.png"
+		media="(min-width:650px)">
+		<img src='spriteimg.gif'/>
+	</picture>
+	<div class="container">
+	<a class='anchr' href="https://cleard2-uat.unileversolutions.com/tr/kad%C4%B1n.html" title="Kadın">
+	            <span class="o-navbar-label-name">
+	                Kadın
+	             </span>
+	</a>
+</div>
+</body>
+	<script>
+		document.getElementsByClassName('anchr')[0].addEventListener('click',handler,false);
+		function handler(e){
+			e.preventDefault();
+			console.log('in anchor 1st',e.target);
+			console.log('in anchor 1st',e.eventPhase,e);
+		}
+		document.getElementsByClassName('container')[0].addEventListener('click',clicked,false);
+		function clicked(e){
+			console.log('fddddddddd2nd',e.target);
+			e.target.style.backgroundColor='yellow';
+		}
+	</script>
+</html>
