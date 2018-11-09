@@ -14,6 +14,48 @@
 			border:2px solid black;
 			height:400px;
 		}
+		.c-tooltip-info{
+			width:400px;
+			height:400px;
+			background-color:yellow;
+			border:2px solid red;
+		}
+
+.c-tooltip-info__qicon {
+    background: url(sprite.stack.svg#question-mark-icon) no-repeat center center;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    cursor: pointer;
+    left: 96px;
+    position: absolute;
+    top: 0;
+}
+
+		.c-tooltip-info__qicon.is-active {
+    		background: url(sprite.stack.svg#cross) no-repeat center center
+		}
+
+.c-tooltip-info__qcopy {
+    background: url(upc.png) no-repeat;
+    position: absolute;
+    display: none;
+    right: 0;
+    top: 40px;
+    z-index: 9;
+    box-shadow: 0 0 16px 3px rgba(130,130,130,.07)
+}
+
+.c-tooltip-info__copy--text {
+    min-width: 232px;
+    min-height: 256px;
+    padding: 25px 20px 8px;
+    background-color: #fefefe
+}
+.c-tooltip-info{
+	position: relative;
+}
+
 	</style>
 </head>
 <body>
@@ -30,6 +72,19 @@
 	             </span>
 	</a>
 </div>
+
+
+<div class="c-tooltip-info">
+	<span class="c-icon-tooltip c-tooltip-info__wrap">
+		<span class="c-tooltip-info__icon c-tooltip-info__qicon"></span>
+			<span class="c-tooltip-info__copy c-tooltip-info__qcopy" style="display: none;">
+			<span class="c-tooltip-info__copy--text">
+				<p>The UPC code can be found at the bottom of the barcode on your product. This is usually 12 characters long.</p>
+			</span>
+		</span>
+	</span>
+</div>
+
 </body>
 	<script>
 		document.getElementsByClassName('anchr')[0].addEventListener('click',handler,false);
@@ -42,6 +97,14 @@
 		function clicked(e){
 			console.log('fddddddddd2nd',e.target);
 			e.target.style.backgroundColor='yellow';
+		}
+		console.log(document.getElementsByClassName('container'),document.getElementsByClassName('c-tooltip-info__qicon'));
+		document.getElementsByClassName('c-tooltip-info__qicon')[0].addEventListener('click',called,false);
+		function called(e){
+			e.target.classList.toggle('is-active');
+			if(e.target.className.indexOf('is-active')>-1){
+				document.getElementsByClassName('c-tooltip-info__qcopy')[0].style.display="block";	
+			}
 		}
 	</script>
 </html>
